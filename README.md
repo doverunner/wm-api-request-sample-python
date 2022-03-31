@@ -1,13 +1,13 @@
 # pallycon-wm-api-request-sample
 
-This sample is to get specification for PallyCon Watermark APIs for python 
+This sample is to get specification for PallyCon Watermark APIs for python
 <br><br>
 
 ## Prerequisites
 
 ### Language
 
-This works on `PYTHON` version : 
+This works on `PYTHON` version :
 
 - 3.7.6 and greater
 
@@ -24,16 +24,20 @@ This works on `PYTHON` version :
 
 Clone this git repository and go to the `sample.py`. This code below is from `sample.py`.
 
+**NOTE**
+See `UrlInfo` enum class for request url and it's method.
+
 ```python
 import json
 from pallycon.sample.watermark.pallycon_wm_api import execute
+from pallycon.sample.config.url_info import UrlInfo
 
 """
 THIS IS A SAMPLE CODE FOR GENERATE PallyCon HTTP API specification.
 """
 
 
-def generate(**kwargs):
+def generate(request_url: UrlInfo, **kwargs):
     print('data requested', json.dumps(kwargs, indent=4))
 
     # set the parameters for generate.
@@ -43,9 +47,10 @@ def generate(**kwargs):
     json_req = kwargs.get('json_req')
 
     # get a result using execute function from module `pallycon_wm_api`
-    result = execute(site_id, access_key, site_key, json_req)
+    api_data_str = execute(site_id, access_key, site_key, json_req)
 
-    print('result', json.dumps({'pallycon-apidata': result}, indent=4))
+    result = request_url.request_url_method(api_data_str, site_id)
+    print('result', json.dumps(result, indent=4))
 
 
 json_str = {
@@ -54,7 +59,8 @@ json_str = {
 }
 
 # Sample Code
-generate(site_id='TUTO',
+generate(UrlInfo.PACK_JOB_LIST,
+         site_id='TUTO',
          site_key='lU5D8s3PWoLls3PWFWkClULlFWk5D8oC',
          access_key='LT2FVJDp2Xr018zf4Di6lzvNOv3DKP20',
          json_req=json.dumps(json_str))
@@ -72,7 +78,10 @@ data requested {
     "json_req": "{\"storage_type\": \"S3\", \"region\": \"RG011\"}"
 }
 result {
-    "pallycon-apidata": "eyJkYXRhIjogIjFoY0crOUhMckR1ZWlJTjlDWXQ4SVNvekIzY0x6Zy9Db2VHNE5PKzY2cW9WRWo5eEJ1S2JzZkNUaVM3KzZrWWoiLCAidGltZXN0YW1wIjogIjIwMjAtMDctMTVUMTA6Mzg6MTdaIiwgImhhc2giOiAibVVyK1Y3S1JWYXVsVmRpNmRmekZCUERSZ1JHQnpnYWxIT1NCNitJdFh1VT0ifQ=="
+    "description": "DETECT_REGISTER",
+    "pallycon-apidata": "eyJkYXRhIjogIjFoY0crOUhMckR1ZWlJTjlDWXQ4SVNvekIzY0x6Zy9Db2VHNE5PKzY2cW9WRWo5eEJ1S2JzZkNUaVM3KzZrWWoiLCAidGltZXN0YW1wIjogIjIwMjItMDMtMzBUMDg6Mjk6NTdaIiwgImhhc2giOiAibWlUaUxSbmh5ZnBWdmEyZHlVbXdHVHI1VzV3NUpkRmFrbnl0YXdFNTVzaz0ifQ==",
+    "url": "https://api.pallycon.com/api/v2/detect/TUTO/url?pallycon-apidata=eyJkYXRhIjogIjFoY0crOUhMckR1ZWlJTjlDWXQ4SVNvekIzY0x6Zy9Db2VHNE5PKzY2cW9WRWo5eEJ1S2JzZkNUaVM3KzZrWWoiLCAidGltZXN0YW1wIjogIjIwMjItMDMtMzBUMDg6Mjk6NTdaIiwgImhhc2giOiAibWlUaUxSbmh5ZnBWdmEyZHlVbXdHVHI1VzV3NUpkRmFrbnl0YXdFNTVzaz0ifQ==",
+    "method": "POST"
 }
 ```
 
