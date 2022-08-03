@@ -16,8 +16,52 @@ This works on `PYTHON` version :
 ### IDE
 
 - PyCharm
+- Anaconda 4.8.2
+
+<br>
+
+### Libraries
+
+For Anaconda users, create a virtual environment using `environment.yml` file and command.
+
+`environment.yml` file :
+```text
+name: wm_api_request_sample {{or, set environment name}}
+channels:
+  - defaults
+dependencies:
+  - ca-certificates=2021.5.25
+  - certifi=2021.5.30
+  - openssl=1.1.1k
+  - pip=21.1.2
+  - pycrypto=2.6.1
+  - python=3.7.10
+  - pytz=2021.1
+  - setuptools=52.0.0
+  - sqlite=3.35.4
+  - vc=14.2
+  - vs2015_runtime=14.27.29016
+  - wheel=0.36.2
+  - wincertstore=0.2
+prefix: {{set anaconda env directory}}
+``` 
+
+command :
+```shell script
+conda env create -f environment.yml
+```
+<br>
+
+For other environments users, install packages using `requirements.txt`.
+```text
+certifi==2021.5.30
+pycrypto==2.6.1
+pytz==2021.1
+wincertstore==0.2
+```
 
 <br><br>
+
 
 
 ## Quick Start
