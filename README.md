@@ -9,14 +9,30 @@ This sample is to get specification for PallyCon Watermark APIs for python
 
 This works on `PYTHON` version :
 
-- 3.7.6 and greater
+- 3.7.x
 
 <br>
 
-### IDE
+### Virtual Environments
 
-- PyCharm
-- Anaconda 4.8.2
+_**Virtual Environments**(a.k.a. `Envs`) must be established_ and do all the tasks in this Envs.
+
+In this project we use `Anaconda 4.8.2` as Envs.
+
+
+**how to install virtual environments?**  
+If you are not familiar with Envs, see the list below and choose one out of this.  
+Installation guide is here : [How to create virtual environments with venv and conda in Python
+](https://lynn-kwong.medium.com/how-to-create-virtual-environments-with-venv-and-conda-in-python-31814c0a8ec2)
+
+
+> list of virtual environments
+> - Anaconda
+> - miniconda
+> - venv
+
+
+
 
 <br>
 
@@ -73,8 +89,8 @@ See `UrlInfo` enum class for request url and it's method.
 
 ```python
 import json
-from pallycon.sample.watermark.pallycon_wm_api import execute
-from pallycon.sample.config.url_info import UrlInfo
+from watermark.pallycon_wm_api import execute
+from config.url_info import UrlInfo
 
 """
 THIS IS A SAMPLE CODE FOR GENERATE PallyCon HTTP API specification.
