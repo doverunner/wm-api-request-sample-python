@@ -1,6 +1,6 @@
 import json
-from pallycon.sample.watermark.pallycon_wm_api import execute
-from pallycon.sample.config.url_info import UrlInfo
+from watermark.pallycon_wm_api import execute
+from config.url_info import UrlInfo
 
 """
 THIS IS A SAMPLE CODE FOR GENERATE PallyCon HTTP API specification.
