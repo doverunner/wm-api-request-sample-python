@@ -82,81 +82,70 @@ wincertstore==0.2
 
 ## Quick Start
 
-Clone this git repository and go to the `sample.py`. This code below is from `sample.py`.
-
-**NOTE**
-See `UrlInfo` enum class for request url and it's method.
-
-```python
-import json
-from watermark.pallycon_wm_api import execute
-from config.url_info import UrlInfo
-
-"""
-THIS IS A SAMPLE CODE FOR GENERATE PallyCon HTTP API specification.
-"""
+How to generate playback URL using the python script
 
 
-def generate(request_url: UrlInfo, **kwargs):
-    print('data requested', json.dumps(kwargs, indent=4))
+### Step 1:
 
-    # set the parameters for generate.
-    site_id = kwargs.get('site_id')
-    access_key = kwargs.get('access_key')
-    site_key = kwargs.get('site_key')
-    json_req = kwargs.get('json_req')
+Open the sample.py file in an editor
 
-    # get a result using execute function from module `pallycon_wm_api`
-    api_data_str = execute(site_id, access_key, site_key, json_req)
 
-    result = request_url.request_url_method(api_data_str, site_id)
-    print('result', json.dumps(result, indent=4))
 
+### Step 2:
+
+In the json_str enter the following:
+
+```text
 
 json_str = {
-    "storage_type": "S3",
-    "region": "RG011"
+    "domain”:”sdfsdf.cloudfront.net",            //<<cloudfront url
+    "output_path": “output”_video,               //<< S3 output folder path
+    "cid": "BBB",                                //<< Content ID
+    "streaming_format": "dash",                  //<<streaming format dash, hls
+    "forensic_mark": “Watermark_Demo”,           //<< forensic watermark string
+    "wmt_type": "aes",                           //<<watermark type aes
+    "Prefix_folder": "wm-contents"               //<<wm-contents folder name
 }
-
-# Sample Code
-generate(UrlInfo.PACK_JOB_LIST,
-         site_id='TUTO',
-         site_key='lU5D8s3PWoLls3PWFWkClULlFWk5D8oC',
-         access_key='LT2FVJDp2Xr018zf4Di6lzvNOv3DKP20',
-         json_req=json.dumps(json_str))
-
 ```
-<br>
 
-#### Result of quick start
 
+### Step 3:
+
+After updating the json_str have the following code to generate watermark session URL
+
+```text
+generate(UrlInfo.SESSION_WATERMARK_URL_GENERATE,
+         site_id=‘YZXX',
+         site_key=‘32MYdSKheT3brD5y3njqFlMlCKyxRh1a',
+         access_key=‘a2yx45EmY5djchcg71CTY8ay7upZ',
+         json_req='{"region": "RG004"}')
 ```
-data requested {
-    "site_id": "TUTO",
-    "site_key": "lU5D8s3PWoLls3PWFWkClULlFWk5D8oC",
-    "access_key": "LT2FVJDp2Xr018zf4Di6lzvNOv3DKP20",
-    "json_req": "{\"storage_type\": \"S3\", \"region\": \"RG011\"}"
-}
+
+### Step 4:
+
+If python command line is being used then execute the command   
+“Python sample.py”  
+Or in anaconda execute the sample.py  script
+
+
+
+### Step 5:
+
+The output generated in step 4 would have a  url info for example:
+```text
 result {
-    "description": "DETECT_REGISTER",
-    "pallycon-apidata": "eyJkYXRhIjogIjFoY0crOUhMckR1ZWlJTjlDWXQ4SVNvekIzY0x6Zy9Db2VHNE5PKzY2cW9WRWo5eEJ1S2JzZkNUaVM3KzZrWWoiLCAidGltZXN0YW1wIjogIjIwMjItMDMtMzBUMDg6Mjk6NTdaIiwgImhhc2giOiAibWlUaUxSbmh5ZnBWdmEyZHlVbXdHVHI1VzV3NUpkRmFrbnl0YXdFNTVzaz0ifQ==",
-    "url": "https://api.pallycon.com/api/v2/detect/TUTO/url?pallycon-apidata=eyJkYXRhIjogIjFoY0crOUhMckR1ZWlJTjlDWXQ4SVNvekIzY0x6Zy9Db2VHNE5PKzY2cW9WRWo5eEJ1S2JzZkNUaVM3KzZrWWoiLCAidGltZXN0YW1wIjogIjIwMjItMDMtMzBUMDg6Mjk6NTdaIiwgImhhc2giOiAibWlUaUxSbmh5ZnBWdmEyZHlVbXdHVHI1VzV3NUpkRmFrbnl0YXdFNTVzaz0ifQ==",
-    "method": "POST"
+    "description": "SESSION_WATERMARK_URL_GENERATE",
+
+    "pallycon-apidata": "eyJkYXRhIjogImx6SlJTbGtKMVN6Rjg4cm5tdm\UtyK1pTdUl4a3pEMW52K2psUEE9IiwgInRpMDIyLTEyLTI2VDE1OjIxOjE1WiIsICJoYXNoIjogIkwzK0pCK1VzMWsrM1BDaWtMYzNETmQ4ekpScmk0ZVNwbTlVU21iSTFlMDQ9In0=",
+
+    "url": "https://watermark.pallycon.com/api/v2/session/watermarkUrl/MOXX?pallycon-apidata=eyJkYXRmx6SlJTbGtKMVN6Rjg4cm5tdm83Qm1URUtyK1pTdUl4a3pEMW52K2psUEE9IiwgInRpbWVaWtMYzNETmQ4ekpScmk0ZVNwbTlVU21iSTFlMDQ9In0=",
+
+    "method": "GET"
 }
 ```
 
+### Step 6:
 
-<br><br>
-
-### HOW IT WORKS ?
-
-If want to see how it works, go to module  `pallycon.sample.watermark.pallycon_wm_api`. On the top of this module, there is a simple note how it works.
-
-> 1. get `site_id`, `access_key`, `site_key`, and `json_req`
-> 2. encrypt `json_req` with `_make_data()`.
-> 3. make `timestamp` with `_make_timestamp()`.
-> 4. make `hash` with `_make_hash()`.
-> 5. return PallyCon Watermark API specificated String from the values `#2 ~ #4`
-
-<br><br><br><br><br><br>
-
+Copy the url and paste it in browser to get the .playback mpd HLS url  
+OR  
+Use the GET method to fetch the playback mpd or HLS url.
