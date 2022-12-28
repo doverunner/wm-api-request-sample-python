@@ -2,16 +2,9 @@ from enum import Enum
 
 
 class UrlInfo(Enum):
-    PACK_JOB_REGISTER = ("https://api.pallycon.com/api/v2/pack/", "POST", None, "PACK_JOB_REGISTER")
-    PACK_JOB_LIST = ("https://api.pallycon.com/api/v2/pack/", "GET", None, "PACK_JOB_LIST")
-
     SESSION_WATERMARK_URL_GENERATE = ("https://watermark.pallycon.com/api/v2/session/watermarkUrl/", "GET", None, "SESSION_WATERMARK_URL_GENERATE")
     SESSION_WATERMARK_TOKEN_GENERATE = ("https://watermark.pallycon.com/api/v2/session/watermarkData/", "GET", None, "SESSION_WATERMARK_TOKEN_GENERATE")
     SESSION_LIST = ("https://watermark.pallycon.com/api/v2/session/list/", "GET", None, "SESSION_LIST")
-
-    STORAGE_REGISTER = ("https://api.pallycon.com/api/v2/storage/", "POST", None, "STORAGE_REGISTER")
-    STORAGE_UPDATE = ("https://api.pallycon.com/api/v2/storage/", "PUT", None, "STORAGE_UPDATE")
-    STORAGE_LIST = ("https://api.pallycon.com/api/v2/storage/", "GET", None, "STORAGE_LIST")
 
     DETECT_REGISTER = ("https://api.pallycon.com/api/v2/detect/", "POST", "url", "DETECT_REGISTER")
     DETECT_LIST = ("https://api.pallycon.com/api/v2/detect/", "GET", "list", "DETECT_LIST")
