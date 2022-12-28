@@ -118,7 +118,7 @@ generate(UrlInfo.SESSION_WATERMARK_URL_GENERATE,
          site_id=‘YZXX',
          site_key=‘32MYdSKheT3brD5y3njqFlMlCKyxRh1a',
          access_key=‘a2yx45EmY5djchcg71CTY8ay7upZ',
-         json_req='{"region": "RG004"}')
+         json_req=json.dumps(json_str))
 ```
 
 ### Step 4:
