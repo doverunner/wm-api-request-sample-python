@@ -104,7 +104,7 @@ json_str = {
     "streaming_format": "dash",                  //<<streaming format dash, hls
     "forensic_mark": “Watermark_Demo”,           //<< forensic watermark string
     "wmt_type": "aes",                           //<<watermark type aes
-    "Prefix_folder": "wm-contents"               //<<wm-contents folder name
+    "prefix_folder": "wm-contents"               //<<wm-contents folder name
 }
 ```
 
