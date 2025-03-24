@@ -1,6 +1,6 @@
-# pallycon-wm-api-request-sample
+# DoveRunner Watermark API Request Sample for Python
 
-This sample is to get specification for PallyCon Watermark APIs for python
+This sample is to get specification for DoveRunner Watermark APIs for python
 <br><br>
 
 ## Prerequisites
